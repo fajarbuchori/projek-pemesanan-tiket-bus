@@ -1,175 +1,31 @@
-# projek-pemesanan-tiket-bus
-Membuat sistem pemesanan tiket bus yang interaktif dan menarik.
+# Aurora Buslines Reservation System
 
-# 🚌 AURORA BUSLINES RESERVATION SYSTEM
-
-![Python](https://img.shields.io/badge/Python-3.14-blue)
-![Rich](https://img.shields.io/badge/Rich-Terminal_UI-green)
-![Status](https://img.shields.io/badge/Status-Completed-success)
-
-# 🚌 AURORA BUSLINES RESERVATION SYSTEM
-
-Sistem Reservasi Tiket Bus berbasis Terminal menggunakan Python.
-
-Aplikasi ini memungkinkan pengguna melakukan pemesanan tiket bus, mencari tiket berdasarkan nomor resi, melihat daftar jurusan, melihat seluruh transaksi, dan menampilkan laporan pendapatan.
+The **Aurora Buslines Reservation System** is a CLI (Command Line Interface) based bus ticket booking management application built using Python. This application features a multi-role architecture (**Admin** and **User**) and automates transaction workflows, including instant HTML email confirmations, payment verification, cancellations, and refund processing integrated with dynamic QR code generation.
 
 ---
 
-## ✨ Fitur
+## 🚀 Key Features
 
-### 🔐 Login System
-- Login menggunakan ID dan Password.
-- Validasi login sebelum masuk ke dashboard.
+### 1. Multi-Role System (Authentication & Login)
+* **User Role:** Book bus tickets, choose routes, select departure schedules, choose bus types, pick seats interactively, select payment methods, search transaction history, and cancel active tickets.
+* **Admin Role:** Manage master route data (add, edit, delete, and modify ticket prices), verify pending payments to "PAID" status, process ticket refunds/returns manually, and view a centralized revenue report.
 
-### 🎫 Pemesanan Tiket
-- Input data penumpang.
-- Pilihan jurusan berdasarkan kode.
-- Pilihan jenis bus.
-- Pilihan jenis tiket.
-- Pemilihan nomor kursi.
-- Generate nomor resi otomatis.
-- Diskon otomatis berdasarkan jumlah tiket.
+### 2. Automated Email Notifications (SMTP Integration)
+Directly integrated with the Gmail SMTP server to send formatted responsive HTML emails to customers for various events:
+* Booking confirmations (with an embedded *inline QR Code* containing transaction metadata for QRIS payments).
+* Payment verification updates once marked as paid by the Admin.
+* Reservation cancellation confirmations.
+* Refund/return request receipts.
 
-### 🔍 Cari Tiket
-- Mencari tiket menggunakan nomor resi.
-- Menampilkan detail tiket yang telah dipesan.
-
-### 🗺️ Daftar Jurusan
-- Menampilkan seluruh jurusan yang tersedia.
-- Menggunakan kode jurusan untuk mengurangi kesalahan input.
-
-### 📊 Laporan Pendapatan
-- Total transaksi.
-- Total tiket terjual.
-- Total pendapatan.
-
-### 🚪 Logout
-- Keluar dari sistem.
+### 3. Interactive & Modern CLI Interface
+* Leverages the `rich` library to present data using beautiful visual panels, organized tables, status-based text coloring, and animated loading delays.
+* Interactive seat mapping (`[A1]` to `[D4]`) with real-time visual cues: Green means available, and Red marked with `[X]` means already booked/reserved.
 
 ---
 
-## 🛠️ Teknologi yang Digunakan
+## 🛠️ Prerequisites & Dependencies
 
-- Python 3
-- Rich
-- Colorama
-
----
-
-## 📦 Instalasi
-
-Install package yang diperlukan:
+Before running the application, ensure that you have Python (version 3.8 or newer) installed along with the following third-party libraries:
 
 ```bash
-pip install rich colorama
-```
-
----
-
-## ▶️ Menjalankan Program
-
-```bash
-python aurora_buslines.py
-```
-
----
-
-## 🔑 Login Default
-
-```text
-ID Login : admin
-Password : 12345
-```
-
----
-
-## 📌 Daftar Jurusan
-
-| Kode | Jurusan |
-|--------|----------|
-| SJ01 | Surabaya → Jakarta |
-| JS02 | Jakarta → Surabaya |
-| BJ03 | Bandung → Jakarta |
-| JB04 | Jakarta → Bandung |
-| YS05 | Yogyakarta → Surabaya |
-
----
-
-## 🎟️ Jenis Tiket
-
-### Ekonomi
-Harga paling terjangkau.
-
-### Eksekutif
-Kursi lebih nyaman.
-
-### VIP
-Fasilitas premium dan kursi eksklusif.
-
----
-
-## 💺 Sistem Kursi
-
-- Setiap kursi hanya dapat dipilih satu kali.
-- Kursi yang sudah digunakan tidak dapat dipilih kembali.
-- Sistem akan menampilkan kursi yang tersedia.
-
----
-
-## 💰 Sistem Diskon
-
-| Jumlah Tiket | Diskon |
-|-------------|---------|
-| 1 - 2 | 0% |
-| 3 - 4 | 5% |
-| ≥ 5 | 10% |
-
----
-
-## 📄 Contoh Nomor Resi
-
-```text
-ABL-137563
-```
-
----
-
-## ⚠️ Disclaimer
-
-Tiket yang sudah dibeli **tidak dapat direfund**.
-
----
-
-## 👨‍💻 Developer
-
-Project dibuat menggunakan Python sebagai implementasi konsep:
-
-- Function
-- Dictionary
-- List
-- Looping
-- Validation
-- Conditional Statement
-- Data Management
-- Terminal User Interface (TUI)
-
----
-
-## 📷 Tampilan
-
-Dashboard:
-
-```text
-[1] Pesan Tiket
-[2] Cari Tiket
-[3] Daftar Jurusan
-[4] Lihat Semua Transaksi
-[5] Laporan Pendapatan
-[6] Logout
-```
-
----
-
-## 🎯 Tujuan Project
-
-Project ini dibuat sebagai simulasi sistem reservasi tiket bus berbasis terminal untuk mempelajari penerapan pemrograman Python dalam pengelolaan data dan interaksi pengguna.
+pip install colorama rich qrcode pillow
